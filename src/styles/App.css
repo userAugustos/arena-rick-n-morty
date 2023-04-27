@@ -1,0 +1,96 @@
+.container {
+    flex-direction: column;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.container .hero {
+    background: rgb(246, 245, 245);
+    height: 30rem;
+
+    position: relative;
+    color: #1a1a1a;
+}
+
+.container .hero h1 {
+    z-index: 1;
+    font-weight: 600;
+    font-family: 'Patrick Hand', cursive;
+    font-size: 6em;
+}
+
+.container .hero img {
+    position: absolute;
+    bottom: 0;
+    width: 30%;
+    min-width: 250px;
+    max-width: 400px;
+}
+
+@media (max-width: 768px) {
+    .container .hero {
+        place-items: start;
+    }
+}
+
+@media (max-width: 368px) {
+    .container .hero h1 {
+        font-size: 4em;
+    }
+}
+
+.container .content {
+    flex-direction: column;
+
+    padding: 20px;
+
+    margin: 1rem auto;
+
+    max-width: 1368px;
+    width: 100%;
+}
+
+.content .inputs {
+    width: 100%;
+
+    align-items: center;
+    justify-content: end;
+
+    flex-wrap: wrap;
+}
+
+.inputs input, .inputs select {
+    padding: 1em;
+
+    border-radius: 6px;
+
+    outline: none;
+
+    margin: 0 6px;
+}
+
+.inputs select {
+    cursor: pointer;
+}
+
+.content .prev-next {
+    width: 100%;
+    padding: 0 1rem;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.content .prev-next button {
+    font-size: 1.4rem;
+    font-weight: 800;
+}
+
+.content .list {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 1em;
+
+    width: 100%;
+}
