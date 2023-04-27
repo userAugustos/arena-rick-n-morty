@@ -38,6 +38,16 @@
 
 .card p {
     font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.card h2{
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.card p:hover, .card h2:hover {
+    color: greenyellow;
 }
 
 .card .status_icon {
