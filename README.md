@@ -9,6 +9,13 @@ pnpm i | npm i | yarn i
 
 ### Dev Vite
 
+**vá até o arquivo `vite.config.ts` e remova o `base: ''` dentro do `defineConfig`**
+
+_por que??_
+
+Bom, para upar projetos react-vite no gh-pages, preciso configurar o base path desse projeto, como o mesmo da url do gh-page :)
+após remover ou comentar, pode rodar o `dev` tranquilamente!
+
 ```shell 
 pnpm dev | npm run dev | yarn dev
 ```

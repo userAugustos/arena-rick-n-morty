@@ -1,4 +1,5 @@
 /* eslint-disable */
+// @ts-nocheck
 import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/core';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
@@ -16,10 +17,9 @@ export type Scalars = {
   Upload: any;
 };
 
-export enum CacheControlScope {
-  Private = 'PRIVATE',
-  Public = 'PUBLIC'
-}
+export type CacheControlScope =
+  | 'PRIVATE'
+  | 'PUBLIC';
 
 export type Character = {
   __typename?: 'Character';
@@ -222,10 +222,9 @@ export type Scalars = {
   Upload: any;
 };
 
-export enum CacheControlScope {
-  Private = 'PRIVATE',
-  Public = 'PUBLIC'
-}
+export type CacheControlScope =
+  | 'PRIVATE'
+  | 'PUBLIC';
 
 export type Character = {
   __typename?: 'Character';
