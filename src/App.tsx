@@ -52,7 +52,7 @@ function App() {
         <div className="container flex">
             <div className="hero center-flex">
                 <h1>The Rick 'n Morty Wiki</h1>
-                <img src="/rick-n-morty.png" alt=""/>
+                <img src="/arena-rick-n-morty/rick-n-morty.png" alt=""/>
             </div>
             <div className="content flex">
                 <section className="inputs flex">

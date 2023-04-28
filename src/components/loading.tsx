@@ -1,3 +1,3 @@
 export function Loading(){
-    return <img src="/portal.png" alt="loading" className="loading"/>
+    return <img src="/arena-rick-n-morty/portal.png" alt="loading" className="loading"/>
 }
