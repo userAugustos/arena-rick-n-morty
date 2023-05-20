@@ -6,10 +6,13 @@ import { useQuery } from "urql";
 import { getCharacters } from "./queries.ts";
 import { variablesSchema } from "./types/variables.types.ts";
 import { Card } from "./components/card.tsx";
-import { character } from "./types/character.types.ts";
 import { Loading } from "./components/loading.tsx";
+import {Link, useLocation} from "react-router-dom";
+
+const base = import.meta.env.VITE_BASE_PATH
 
 function App() {
+  const location = useLocation();
   const [variables, setVariables] = useState<variablesSchema>({
     page: 1,
     filter: {},
@@ -52,7 +55,7 @@ function App() {
     <div className="container flex">
       <div className="hero center-flex">
         <h1>The Rick 'n Morty Wiki</h1>
-        <img src="/arena-rick-n-morty/rick-n-morty.png" alt="" />
+        <img src={`${base}/rick-n-morty.png`} alt="" />
       </div>
       <div className="content flex">
         <section className="inputs flex">
@@ -77,8 +80,14 @@ function App() {
         {!fetching && data?.characters && (
           <>
             <ul className="list flex">
-              {data?.characters?.results?.map((character: character) => (
-                  <Card character={character} />
+              {data?.characters?.results?.map((character: any) => (
+                  <Link
+                      key={character.id}
+                      to={`${base}/character/${character.id}`}
+                      state={{ backgroundLocation: location }}
+                  >
+                    <Card character={character} />
+                  </Link>
               ))}
             </ul>
             <section className="prev-next flex">
