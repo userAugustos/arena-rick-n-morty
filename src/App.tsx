@@ -78,9 +78,7 @@ function App() {
           <>
             <ul className="list flex">
               {data?.characters?.results?.map((character: character) => (
-                <li key={character.id}>
                   <Card character={character} />
-                </li>
               ))}
             </ul>
             <section className="prev-next flex">

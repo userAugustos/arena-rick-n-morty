@@ -67,9 +67,6 @@ button:focus-visible {
 ul {
   list-style: none;
 }
-li {
-  width: 100%;
-}
 
 .flex {
   display: flex;

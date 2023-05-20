@@ -2,7 +2,7 @@ import { character } from "../types/character.types.ts";
 import "../styles/card.css";
 export function Card({ character }: { character: character }) {
   return (
-    <div className="card flex">
+    <div className="card flex" key={character.id}>
       <img src={character.image} alt="personagem" />
       <section className="info flex">
         {/*in case we doing redirect in future*/}
