@@ -1,18 +1,15 @@
 import "./styles/App.css";
 import { useEffect, useState } from "react";
-
 import { debounce } from "lodash";
 import { useQuery } from "urql";
 import { getCharacters } from "./queries.ts";
 import { variablesSchema } from "./types/variables.types.ts";
 import { Card } from "./components/card.tsx";
 import { Loading } from "./components/loading.tsx";
-import {Link, useLocation} from "react-router-dom";
 
 const base = import.meta.env.VITE_BASE_PATH
 
 function App() {
-  const location = useLocation();
   const [variables, setVariables] = useState<variablesSchema>({
     page: 1,
     filter: {},
@@ -81,13 +78,7 @@ function App() {
           <>
             <ul className="list flex">
               {data?.characters?.results?.map((character: any) => (
-                  <Link
-                      key={character.id}
-                      to={`${base}/character/${character.id}`}
-                      state={{ backgroundLocation: location }}
-                  >
-                    <Card character={character} />
-                  </Link>
+                  <Card character={character} />
               ))}
             </ul>
             <section className="prev-next flex">

@@ -1,8 +1,19 @@
 import { character } from "../types/character.types.ts";
+import {Link, useLocation} from "react-router-dom";
 import "../styles/card.css";
+
+const base = import.meta.env.VITE_BASE_PATH
+
 export function Card({ character }: { character: character }) {
+  const location = useLocation();
+
   return (
-    <div className="card flex" key={character.id}>
+      <Link
+          className="card flex"
+          key={character.id}
+          to={`${base}/character/${character.id}`}
+          state={{ backgroundLocation: location }}
+      >
       <img src={character.image} alt="personagem" />
       <section className="info flex">
         {/*in case we doing redirect in future*/}
@@ -22,6 +33,6 @@ export function Card({ character }: { character: character }) {
           <p>{character.episode[0].name}</p>
         </section>
       </section>
-    </div>
+      </Link>
   );
 }
