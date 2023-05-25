@@ -1,7 +1,5 @@
 Bom, vou tentar subir esse projeto pro gh-pages, se não for, vou subir no netfly
 
-Eu ainda vou descobrir o por que o github pages simplesmente para de atender meus deploys do nada, maaaas por enquanto só saber que imagens e animações só estão visivéis rodando localmente o projeto, mas todo o funcionamento está deployado [**aqui**](https://useraugustos.github.io/arena-rick-n-morty/), obrigado :)
-
 para rodar o dev na sua máquina é bem simples
 
 ### Dependencies
