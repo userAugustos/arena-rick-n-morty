@@ -1,37 +1,49 @@
-import {useCallback, useEffect, useRef, useState} from "react";
-import {useLocation} from "react-router-dom";
+import {useCallback, useEffect, useRef} from "react";
+import {useParams, useNavigate} from "react-router-dom";
+import '../styles/modal.css'
+
+const base = import.meta.env.VITE_BASE_PATH
 
 export default function Modal() {
-    const location = useLocation()
-    const {pathname: path} = location
-    // const [isOpen, setIsOpen] = useState(true);
+    const {id} = useParams()
+    const navigate = useNavigate()
 
     const dialogRef = useRef<HTMLDialogElement>(null)
+    const contentRef = useRef<HTMLDivElement>(null)
     const handleCloseModal = () => {
         dialogRef.current?.close()
-        // setIsOpen(false)
+        navigate(base)
     }
 
-    // close the modal on off modal click
+    // close the modal on off modal content click
     const onClick = useCallback(({target}: any) => {
-        const {current: el} = dialogRef;
-        if (target === el) handleCloseModal()
+        const {current: el} = contentRef;
+        console.debug(target)
+        if (target !== el) {
+            handleCloseModal()
+        }
     }, [])
 
     useEffect(() => {
         const dialog = dialogRef.current;
         dialog?.showModal()
         // reset the modal effect
-        console.debug(path)
+        console.debug(id)
         return () => dialog?.close()
-    }, [path])
+    }, [id])
 
     return (
         <dialog
             ref={dialogRef}
             onClick={onClick}
+            // onClose={handleCloseModal}
         >
-            hello
+            <div
+                ref={contentRef}
+                className="modal-info"
+            >
+                hello
+            </div>
         </dialog>
     )
 }
