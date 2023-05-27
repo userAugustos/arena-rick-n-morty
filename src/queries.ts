@@ -25,3 +25,36 @@ export const getCharacters = graphql(`
         }
     }
 `);
+
+export const getCharacter = graphql(`
+    query GetCharacter($id: ID!){
+        character(id: $id) {
+            name,
+            status,
+            species,
+            gender,
+            origin {
+                id,
+                name,
+                type,
+                dimension,
+            },
+            location {
+                id,
+                name,
+                dimension,
+                residents {
+                    id,
+                    name
+                }
+            },
+            image,
+            episode {
+                id,
+                name,
+                episode
+            },
+            __typename
+        }
+    }
+`)
