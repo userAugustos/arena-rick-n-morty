@@ -1,4 +1,4 @@
-import {graphql} from "./gql";
+import {graphql} from "../gql";
 
 export const getCharacters = graphql(`
     query GetCharacters($page: Int!, $filter: FilterCharacter) {
@@ -45,7 +45,8 @@ export const getCharacter = graphql(`
                 dimension,
                 residents {
                     id,
-                    name
+                    name,
+                    image
                 }
             },
             image,
