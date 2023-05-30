@@ -27,7 +27,6 @@ export default function Modal() {
     // close the modal on off modal content click
     const onClick = useCallback(({target}: any) => {
         const {current: el} = contentRef;
-        console.debug(target)
         if (target !== el) {
             handleCloseModal()
         }
@@ -39,7 +38,12 @@ export default function Modal() {
         console.debug(data?.character)
         // reset the modal effect
         return () => dialog?.close()
-    }, [id, data])
+    }, [id])
+
+    if (error) {
+        window.alert(`error ${error.message}`)
+        handleCloseModal()
+    }
 
     return (
         <dialog
@@ -50,8 +54,13 @@ export default function Modal() {
         >
             <div
                 ref={contentRef}
+                className="modal-grid"
             >
-                hello
+                <section className="persona">
+                    <img src={`${data?.character?.image}`} alt=""/>
+                </section>
+                <section className="info"></section>
+                <footer></footer>
             </div>
         </dialog>
     )

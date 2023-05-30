@@ -14,3 +14,24 @@
     width: 100%;
     height: 100%;
 }
+
+.modal-grid {
+    display: grid;
+    grid-template-columns: 2fr 4fr;
+    grid-template-rows: 5fr 2fr;
+    grid-template-areas:
+            "persona info"
+            "footer footer"
+}
+
+.modal-grid .persona {
+    grid-area: persona;
+}
+
+.modal-grid .info {
+    grid-area: info;
+}
+
+.modal-grid footer {
+    grid-area: footer;
+}
