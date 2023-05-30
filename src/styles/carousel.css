@@ -1,0 +1,14 @@
+.carousel {
+    width: 100%;
+
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+}
+
+.current-slide {
+    transition: transform .5s ease-in-out;
+}

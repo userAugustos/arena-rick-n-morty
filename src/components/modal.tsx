@@ -2,7 +2,9 @@ import {useCallback, useEffect, useRef} from "react";
 import {useParams, useNavigate} from "react-router-dom";
 import '../styles/modal.css'
 import {useQuery} from "urql";
-import {getCharacter} from "../queries.ts";
+import {getCharacter} from "../utils/queries.ts";
+import {Carousel, ResidentsCarousel} from "./carousel.tsx";
+import {isDescendantChild} from "../utils/descendantChild.ts";
 
 const base = import.meta.env.VITE_BASE_PATH
 
@@ -27,7 +29,13 @@ export default function Modal() {
     // close the modal on off modal content click
     const onClick = useCallback(({target}: any) => {
         const {current: el} = contentRef;
-        if (target !== el) {
+
+        if (!el) {
+            // so if we have a error with the parent element, just close the modal, because he doesn't load
+            return handleCloseModal()
+        }
+
+        if (!isDescendantChild(el, target)) {
             handleCloseModal()
         }
     }, [])
@@ -35,13 +43,12 @@ export default function Modal() {
     useEffect(() => {
         const dialog = dialogRef.current;
         dialog?.showModal()
-        console.debug(data?.character)
         // reset the modal effect
         return () => dialog?.close()
     }, [id])
 
     if (error) {
-        window.alert(`error ${error.message}`)
+        window.alert(`error ${error?.message}`)
         handleCloseModal()
     }
 
@@ -54,13 +61,21 @@ export default function Modal() {
         >
             <div
                 ref={contentRef}
-                className="modal-grid"
+                className={`modal-grid`}
             >
-                <section className="persona">
-                    <img src={`${data?.character?.image}`} alt=""/>
-                </section>
-                <section className="info"></section>
-                <footer></footer>
+                {
+                    fetching ? <p>fetching</p> :
+                        <>
+                            <section className="persona">
+                                <img src={`${data?.character?.image}`} alt=""/>
+                            </section>
+                            <section className="info"></section>
+                            <footer>
+                                <Carousel
+                                    data={data?.character?.location?.residents as unknown as ResidentsCarousel[]}/>
+                            </footer>
+                        </>
+                }
             </div>
         </dialog>
     )
