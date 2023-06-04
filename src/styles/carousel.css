@@ -1,14 +1,48 @@
 .carousel {
     width: 100%;
 
-    overflow: hidden;
-
     display: flex;
     align-items: center;
-    justify-content: space-around;
 
+    position: relative;
 }
 
-.current-slide {
+.carousel .slides {
+    display: flex;
     transition: transform .5s ease-in-out;
+    justify-content: space-between;
+    align-items: center;
+
+    max-height: 80%;
+    /*overflow: scroll;*/
+}
+
+.slide {
+    min-width: 28%;
+    width: 33%;
+
+    border-radius: 6px;
+    padding: 1rem;
+    /*margin: 0 20rem;*/
+}
+
+.slide:nth-child(3n-1) {
+    margin-right: 10px; /* Apply margin to every third item */
+}
+
+.slide img {
+    border-radius: 6px;
+}
+
+.next-slide, .prev-slide {
+    position: absolute;
+    z-index: 99999;
+}
+
+.prev-slide {
+    left: 2px;
+}
+
+.next-slide {
+    right: 2px;
 }

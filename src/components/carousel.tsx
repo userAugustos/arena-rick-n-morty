@@ -3,13 +3,14 @@ import '../styles/carousel.css'
 
 export interface ResidentsCarousel {
     id: string,
-    name: string
+    name: string,
+    image: string
 }
 
 export function Carousel({data}: { data: ResidentsCarousel[] }) {
     const [currentSlide, setCurrentSlide] = useState(0);
-    const slides = data.slice(0, (data.length * 20) / 100);
-    const totalSlides = slides.length
+    const characters = data.slice(0, (data.length * 20) / 100);
+    const totalSlides = characters.length
 
     const nextSlide = () => {
         setCurrentSlide((prevIndex) => (prevIndex + 1) % totalSlides)
@@ -21,18 +22,24 @@ export function Carousel({data}: { data: ResidentsCarousel[] }) {
 
     return (
         <div className="carousel">
+            <button onClick={prevSlide} className="prev-slide">
+                {`${"<"}`}
+            </button>
             <div
-                className="current-slide"
-                style={{transform: `translateX(${currentSlide * 25}%`}}
+                className="slides"
+                style={{transform: `translateX(-${(currentSlide * 25)}%`}}
             >
                 {
-                    slides.map(slides => (
-                        <div className="slide" key={slides.id}>
-                            {slides.name}
+                    characters.map(character => (
+                        <div className="slide" key={character.id}>
+                            <img src={character.image} alt={character.name}/>
                         </div>
                     ))
                 }
             </div>
+            <button onClick={nextSlide} className="next-slide">
+                {`${">"}`}
+            </button>
         </div>
     )
 }

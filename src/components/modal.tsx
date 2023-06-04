@@ -43,9 +43,10 @@ export default function Modal() {
     useEffect(() => {
         const dialog = dialogRef.current;
         dialog?.showModal()
+        console.debug(data?.character)
         // reset the modal effect
         return () => dialog?.close()
-    }, [id])
+    }, [id, data])
 
     if (error) {
         window.alert(`error ${error?.message}`)

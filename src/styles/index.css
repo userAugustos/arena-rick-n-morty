@@ -39,6 +39,7 @@ body,
 
 img {
     max-width: 100%;
+    max-height: 100%;
 }
 
 h1 {
@@ -89,6 +90,22 @@ ul {
     position: absolute;
     left: 50%;
     bottom: 20%;
+}
+
+
+/* remove click of scroll bar*/
+
+.disable-scrollbar-click::-webkit-scrollbar {
+    display: none; /* Hide the scrollbar on Chrome, Safari, and Opera */
+}
+
+.disable-scrollbar-click::-webkit-scrollbar-track {
+    background-color: transparent; /* Disable the background of the scrollbar track */
+}
+
+.disable-scrollbar-click::-webkit-scrollbar-thumb {
+    background-color: transparent; /* Disable the scrollbar thumb */
+    pointer-events: none; /* Disable pointer events on the scrollbar thumb */
 }
 
 @keyframes rotate {
