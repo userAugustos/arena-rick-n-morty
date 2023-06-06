@@ -2,10 +2,10 @@ import "./styles/App.css";
 import {useEffect, useState} from "react";
 import {debounce} from "lodash";
 import {useQuery} from "urql";
-import {getCharacters} from "./utils/queries.ts";
-import {variablesSchema} from "./types/variables.types.ts";
-import {Card} from "./components/card.tsx";
-import {Loading} from "./components/loading.tsx";
+import {getCharacters} from "./utils/queries";
+import {variablesSchema} from "./types/variables.types";
+import {Card} from "./components/card";
+import {Loading} from "./components/loading";
 
 const base = import.meta.env.VITE_BASE_PATH
 

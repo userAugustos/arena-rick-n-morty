@@ -24,12 +24,53 @@
             "footer footer";
 }
 
+.modal-grid .persona, .modal-grid .info {
+    padding: 1em;
+}
+
+.modal-grid span {
+    font-size: 1rem;
+    font-weight: 500;
+    color: rgba(169, 167, 167, 0.91);
+}
+
 .modal-grid .persona {
     grid-area: persona;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+
+    padding-top: 3em;
+}
+
+.modal-grid .persona img {
+    border-radius: 6px;
+
+    box-shadow: 2px 4px 8px 1px #78c000;
+
+    width: 80%;
+}
+
+.modal-grid .persona strong {
+    margin-top: 2em;
+    font-size: 1.5rem;
+    text-align: center
 }
 
 .modal-grid .info {
     grid-area: info;
+
+    flex-wrap: wrap;
+
+    padding: 4em;
+}
+
+.modal-grid .info strong {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    color: #535bf2;
+    font-size: 1.2rem;
 }
 
 .modal-grid footer {

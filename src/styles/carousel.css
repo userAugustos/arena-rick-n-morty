@@ -5,6 +5,9 @@
     align-items: center;
 
     position: relative;
+
+    padding: 1em;
+    overflow: hidden;
 }
 
 .carousel .slides {
@@ -18,12 +21,21 @@
 }
 
 .slide {
-    min-width: 28%;
+    min-width: 20%;
     width: 33%;
 
     border-radius: 6px;
-    padding: 1rem;
     /*margin: 0 20rem;*/
+    cursor: pointer;
+    margin: 0 2em;
+
+    transition: box-shadow ease-in .5s;
+    line-height: 0;
+    /*margin-bottom: 1em;*/
+}
+
+.slide:hover {
+    box-shadow: 2px 4px 8px 1px #78c000;
 }
 
 .slide:nth-child(3n-1) {

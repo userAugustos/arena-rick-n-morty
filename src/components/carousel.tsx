@@ -27,7 +27,7 @@ export function Carousel({data}: { data: ResidentsCarousel[] }) {
             </button>
             <div
                 className="slides"
-                style={{transform: `translateX(-${(currentSlide * 25)}%`}}
+                style={{transform: `translateX(-${(currentSlide * 26)}%`}}
             >
                 {
                     characters.map(character => (

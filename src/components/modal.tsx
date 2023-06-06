@@ -2,9 +2,9 @@ import {useCallback, useEffect, useRef} from "react";
 import {useParams, useNavigate} from "react-router-dom";
 import '../styles/modal.css'
 import {useQuery} from "urql";
-import {getCharacter} from "../utils/queries.ts";
-import {Carousel, ResidentsCarousel} from "./carousel.tsx";
-import {isDescendantChild} from "../utils/descendantChild.ts";
+import {getCharacter} from "../utils/queries";
+import {Carousel, ResidentsCarousel} from "./carousel";
+import {isDescendantChild} from "../utils/descendantChild";
 
 const base = import.meta.env.VITE_BASE_PATH
 
@@ -65,17 +65,38 @@ export default function Modal() {
                 className={`modal-grid`}
             >
                 {
-                    fetching ? <p>fetching</p> :
-                        <>
-                            <section className="persona">
-                                <img src={`${data?.character?.image}`} alt=""/>
-                            </section>
-                            <section className="info"></section>
-                            <footer>
-                                <Carousel
-                                    data={data?.character?.location?.residents as unknown as ResidentsCarousel[]}/>
-                            </footer>
-                        </>
+                    <>
+                        <section className={`persona flex ${fetching && "shimmerBG"}`}>
+                            <img src={`${data?.character?.image}`} alt=""/>
+                            <strong>{data?.character?.name}</strong>
+                        </section>
+                        <section className={`info flex ${fetching && "shimmerBG"}`}>
+                            <strong>
+                                <span>Specie</span>
+                                {data?.character?.species}
+                            </strong>
+                            <strong>
+                                <span>Status</span>
+                                {data?.character?.status}
+                            </strong>
+                            <strong>
+                                <span>Gender</span>
+                                {data?.character?.gender}
+                            </strong>
+                            <strong>
+                                <span>Home Planet</span>
+                                {data?.character?.origin?.name}
+                            </strong>
+                            <strong>
+                                <span>Last known location</span>
+                                {data?.character?.location?.name}
+                            </strong>
+                        </section>
+                        <footer>
+                            <Carousel
+                                data={data?.character?.location?.residents as unknown as ResidentsCarousel[]}/>
+                        </footer>
+                    </>
                 }
             </div>
         </dialog>
