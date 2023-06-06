@@ -9,8 +9,8 @@ export interface ResidentsCarousel {
 
 export function Carousel({data}: { data: ResidentsCarousel[] }) {
     const [currentSlide, setCurrentSlide] = useState(0);
-    const characters = data.slice(0, (data.length * 20) / 100);
-    const totalSlides = characters.length
+    // const data = data.slice(0, (data.length * 20) / 100);
+    const totalSlides = data.length
 
     const nextSlide = () => {
         setCurrentSlide((prevIndex) => (prevIndex + 1) % totalSlides)
@@ -27,12 +27,12 @@ export function Carousel({data}: { data: ResidentsCarousel[] }) {
             </button>
             <div
                 className="slides"
-                style={{transform: `translateX(-${(currentSlide * 26)}%`}}
+                style={{transform: `translateX(-${(currentSlide)}%`}}
             >
                 {
-                    characters.map(character => (
-                        <div className="slide" key={character.id}>
-                            <img src={character.image} alt={character.name}/>
+                    data.map(data => (
+                        <div className="slide" key={data.id}>
+                            <img src={data.image} alt={data.name}/>
                         </div>
                     ))
                 }

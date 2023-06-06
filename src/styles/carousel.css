@@ -21,8 +21,9 @@
 }
 
 .slide {
-    min-width: 20%;
-    width: 33%;
+    /*min-width: 20%;*/
+    /*width: 33%;*/
+    max-width: 20%;
 
     border-radius: 6px;
     /*margin: 0 20rem;*/
@@ -44,6 +45,7 @@
 
 .slide img {
     border-radius: 6px;
+    max-width: 230px;
 }
 
 .next-slide, .prev-slide {

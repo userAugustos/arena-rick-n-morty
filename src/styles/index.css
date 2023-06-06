@@ -108,6 +108,8 @@ ul {
     pointer-events: none; /* Disable pointer events on the scrollbar thumb */
 }
 
+
+/* so the thing to shimmmer really work, it's a specific load modal structure*/
 .shimmerBG {
     animation-duration: 2.2s;
     animation-fill-mode: forwards;

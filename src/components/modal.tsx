@@ -5,6 +5,7 @@ import {useQuery} from "urql";
 import {getCharacter} from "../utils/queries";
 import {Carousel, ResidentsCarousel} from "./carousel";
 import {isDescendantChild} from "../utils/descendantChild";
+import {Loading} from "./loading.tsx";
 
 const base = import.meta.env.VITE_BASE_PATH
 
@@ -65,38 +66,39 @@ export default function Modal() {
                 className={`modal-grid`}
             >
                 {
-                    <>
-                        <section className={`persona flex ${fetching && "shimmerBG"}`}>
-                            <img src={`${data?.character?.image}`} alt=""/>
-                            <strong>{data?.character?.name}</strong>
-                        </section>
-                        <section className={`info flex ${fetching && "shimmerBG"}`}>
-                            <strong>
-                                <span>Specie</span>
-                                {data?.character?.species}
-                            </strong>
-                            <strong>
-                                <span>Status</span>
-                                {data?.character?.status}
-                            </strong>
-                            <strong>
-                                <span>Gender</span>
-                                {data?.character?.gender}
-                            </strong>
-                            <strong>
-                                <span>Home Planet</span>
-                                {data?.character?.origin?.name}
-                            </strong>
-                            <strong>
-                                <span>Last known location</span>
-                                {data?.character?.location?.name}
-                            </strong>
-                        </section>
-                        <footer>
-                            <Carousel
-                                data={data?.character?.location?.residents as unknown as ResidentsCarousel[]}/>
-                        </footer>
-                    </>
+                    fetching ? <Loading/> :
+                        <>
+                            <section className={`persona flex ${fetching && "shimmerBG"}`}>
+                                <img src={`${data?.character?.image}`} alt=""/>
+                                <strong>{data?.character?.name}</strong>
+                            </section>
+                            <section className={`info flex ${fetching && "shimmerBG"}`}>
+                                <strong>
+                                    <span>Specie</span>
+                                    {data?.character?.species}
+                                </strong>
+                                <strong>
+                                    <span>Status</span>
+                                    {data?.character?.status}
+                                </strong>
+                                <strong>
+                                    <span>Gender</span>
+                                    {data?.character?.gender}
+                                </strong>
+                                <strong>
+                                    <span>Home Planet</span>
+                                    {data?.character?.origin?.name}
+                                </strong>
+                                <strong>
+                                    <span>Last known location</span>
+                                    {data?.character?.location?.name}
+                                </strong>
+                            </section>
+                            <footer>
+                                <Carousel
+                                    data={data?.character?.location?.residents as unknown as ResidentsCarousel[]}/>
+                            </footer>
+                        </>
                 }
             </div>
         </dialog>
